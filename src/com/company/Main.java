@@ -40,9 +40,13 @@ public class Main {
         //        get input from user
         System.out.println("Your payslip has been generated:");
 
+//        Create the template for making an instance
+        Employee employee1 = new Employee(firstName, surname, annualSalary, superRate);
+
         //        generate message to say "Your payslip has been generated:
 
 //        output name (first name + surname)
+        System.out.println("Name: " + employee1.employeeName);
 //        output pay period (from and to)
 //        output gross income
 //        output income tax
