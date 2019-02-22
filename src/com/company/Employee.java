@@ -6,13 +6,13 @@ public class Employee {
 
 
 //    Create a "fullName" method to join the first name with last name
-    public void fullName(){
-
+    public String fullName(String firstName, String surname){
+        return firstName + " " + surname;
     }
 
 
 //    Construct a person instance
-    Employee(){
+    Employee() {
 
     }
 
