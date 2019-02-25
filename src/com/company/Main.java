@@ -37,7 +37,7 @@ public class Main {
 
 //        COMPLETE OBJECT TO USE TO PRINT TO SCREEN
         Employee employee1 = new Employee(firstName, surname, annualSalary, superRate);
-        PayCalculator pay1 = new PayCalculator(startDate, endDate, annualSalary);
+        PayCalculator pay1 = new PayCalculator(startDate, endDate, annualSalary, superRate);
 
 
 //      OUTPUT TO SCREEN THE GENERATED PAYSLIP DETAILS
@@ -45,12 +45,16 @@ public class Main {
 //        output pay period (from and to)
         System.out.println("Pay Period: " + pay1.payPeriod(startDate, endDate));
 //        output gross income
-        System.out.print("Gross Income: " + pay1.grossIncome(annualSalary));
+        System.out.println("Gross Income: " + pay1.grossIncome(annualSalary));
 //        output income tax
+        System.out.println("Income Tax: " + pay1.incomeTax(annualSalary));
 //        output net income
+        System.out.println("Net Income: " + pay1.employeeNetIncome);
 //        output super
-
+        System.out.println("Super: " + pay1.employeeSuper);
 //        generate message to say "Thank you for using MYOB!"
+
+        System.out.println("Thank you for using MYOB!");
     }
 }
 

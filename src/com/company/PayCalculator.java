@@ -5,8 +5,9 @@ public class PayCalculator {
 //    Declare the variables
     public final String employeePayPeriod;
     public final int employeeGrossIncome;
-
-
+    public final int employeeIncomeTax;
+    public final int employeeNetIncome;
+    public final int employeeSuper;
 
 //    Define a method to calculate pay period
     public String payPeriod(String startDate, String endDate){
@@ -17,24 +18,8 @@ public class PayCalculator {
         return annualSalary/12;
     }
 
-//    Define a method to calculate income tax
-//    public int incomeTax(int annualSalary) {
-////        requires an if statement to ensure get the correct tax on corrosponding income bracket
-//        if (annualSalary <= 18200) {
-//            return 0;
-//        } else if (>=18201 && annualSalary <= 37000){
-//            return ((grossIncome(annualSalary) - 18200) * Integer.parseint(0.19)) / 12;
-//        } else if (>=37001 && annualSalary <= 87000){
-//            return (3572 + (grossIncome(annualSalary) - 37000) * Integer.parseint(0.325)) / 12;
-//        } else if (>=87001 && annualSalary <= 180000){
-//            return (19822 + (grossIncome(annualSalary) - 87000) * Integer.parseint(0.37)) / 12;
-//        } else if (annualSalary >= 180000){
-//            return (54232 + (grossIncome(annualSalary) - 180000) * Integer.parseint(0.45)) / 12;
-//        }
-//
-//    }
-
-    public int between (int annualSalary) {
+    //    Define a method to calculate income tax
+    public int incomeTax (int annualSalary) {
 //        requires an if statement to ensure get the correct tax on corrosponding income bracket
         if (annualSalary <= 18200) {
             return 0;
@@ -54,14 +39,26 @@ public class PayCalculator {
         return annualSalary;
     }
 
-//    Define a method to calculate net income
-//    Define a method to calculate super
 
+
+//    Define a method to calculate net income
+    public int netIncome (int annualSalary){
+       return grossIncome(annualSalary) - incomeTax(annualSalary);
+    }
+
+//    Define a method to calculate super
+    public int superannuation (int annualSalary, int superRate){
+        double superNotRounded=(grossIncome(annualSalary) * superRate)/100;
+        return (int)Math.round(superNotRounded);
+    }
 
 
 //    construct pay instance/object
-    public PayCalculator (String startDate, String endDate, int annualSalary){
+    public PayCalculator (String startDate, String endDate, int annualSalary, int superRate){
         this.employeePayPeriod = payPeriod(startDate, endDate);
         this.employeeGrossIncome = grossIncome(annualSalary);
+        this.employeeIncomeTax = incomeTax(annualSalary);
+        this.employeeNetIncome = netIncome(annualSalary);
+        this.employeeSuper = superannuation(annualSalary, superRate);
     }
 }
