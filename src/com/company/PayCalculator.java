@@ -24,17 +24,29 @@ public class PayCalculator {
         if (annualSalary <= 18200) {
             return 0;
         } else if (annualSalary >=18201 && annualSalary <= 37000){
-            double secondBracket=((grossIncome(annualSalary) - 18200) * (0.19)) / 12;
-            return (int)Math.round(secondBracket);
+            double factor = (annualSalary-18200);
+            double annualIncomeTax = factor * 0.19;
+            double monthlyIncomeTax = annualIncomeTax/12;
+//            double secondBracket=((grossIncome(annualSalary) - 18200) * (0.19)) / 12;
+            return (int)Math.round(monthlyIncomeTax);
         } else if (annualSalary >=37001 && annualSalary <= 87000){
-            double thirdBracket=(3572 + (grossIncome(annualSalary) - 37000) * (0.325)) / 12;
-            return (int)Math.round(thirdBracket);
+            double factor = (annualSalary-37000);
+            double annualIncomeTax = 3572+(factor * 0.325);
+            double monthlyIncomeTax = annualIncomeTax/12;
+//            double thirdBracket=(3572 + (grossIncome(annualSalary) - 37000) * (0.325)) / 12;
+            return (int)Math.round(monthlyIncomeTax);
         } else if (annualSalary >=87001 && annualSalary <= 180000){
-             double fourthBracket=(19822 + (grossIncome(annualSalary) - 87000) * (0.37)) / 12;
-            return (int)Math.round(fourthBracket);
+            double factor = (annualSalary-87000);
+            double annualIncomeTax = 19822 + (factor * 0.37);
+            double monthlyIncomeTax = annualIncomeTax/12;
+//             double fourthBracket=(19822 + (grossIncome(annualSalary) - 87000) * (0.37)) / 12;
+            return (int)Math.round(monthlyIncomeTax);
         } else if (annualSalary >= 180000){
-            double fifthBracket=(54232 + (grossIncome(annualSalary) - 180000) * (0.45)) / 12;
-            return (int)Math.round(fifthBracket);
+            double factor = (annualSalary-180000);
+            double annualIncomeTax = 54232 + (factor * 0.45);
+            double monthlyIncomeTax = annualIncomeTax/12;
+//            double fifthBracket=(54232 + (grossIncome(annualSalary) - 180000) * (0.45)) / 12;
+            return (int)Math.round(monthlyIncomeTax);
         }
         return annualSalary;
     }
